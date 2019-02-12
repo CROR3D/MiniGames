@@ -1,0 +1,86 @@
+.site-logo
+{
+    width: 50%;
+    margin: 0 auto;
+}
+
+.site-logo img
+{
+    width: 100%;
+    height: 100%;
+}
+
+.navbar
+{
+    padding-bottom: 20px;
+    border-bottom: 1px solid #CED4DA;
+}
+
+.navbar .navbar-brand
+{
+    cursor: default;
+    color: #E17055;
+}
+
+.dropdown-category
+{
+    position: relative;
+}
+
+.dropdown-category:hover
+{
+    cursor: pointer;
+}
+
+.dropdown-category:hover + .games-list
+{
+    display: block;
+}
+
+.games-list
+{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    border-left: none;
+}
+
+.games-list:hover
+{
+    display: block;
+}
+
+.games-list a
+{
+    cursor: pointer;
+}
+
+.custom-dropdown
+{
+    border: 1px solid #CED4DA;
+    border-radius: 0;
+    margin: 0;
+}
+
+.dropdown-category:hover, .games-list > a:hover
+{
+    border-radius: 0px;
+    color: #E17055;
+}
+
+input[type="search"]:focus
+{
+    box-shadow: none;
+    outline: 0 none;
+}
+
+.btn-custom
+{
+    color: #E17055;
+}
+
+.btn-custom:hover
+{
+    color: #D63031;
+}

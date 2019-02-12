@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block modal %}
+    <div id="modal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id="modal-title" class="modal-title"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>You want to restart game?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Yes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div id="playHeader" class="jumbotron mt-3"></div>
+
+    <div id="gameBoard" class="jumbotron mt-3">
+        <div id="gameBoardUpper" class="card text-center p-5 mb-3"></div>
+        <div id="gameBoardLower" class="card text-center p-5"></div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="build/play.bundle.js"></script>
+{% endblock %}

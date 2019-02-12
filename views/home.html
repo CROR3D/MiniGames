@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block nav %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mt-5">
+        <a class="navbar-brand" href="#">MiniGames</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Game Categories
+                    </a>
+                    <div id="gameCategories" class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown"></div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">HighScores</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-custom my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="jumbotron mt-4">
+        <h2 class="display-5">Latest news</h2>
+        <p class="lead">Find out about new game releases, highscores, tips and more</p>
+        <div id="news-div"></div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="build/app.bundle.js"></script>
+{% endblock %}

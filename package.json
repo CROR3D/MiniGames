@@ -1,0 +1,24 @@
+{
+  "name": "minigames",
+  "version": "1.0.0",
+  "description": "Aplication for playing mini games",
+  "main": "js/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CROR3D/MiniGames.git"
+  },
+  "author": "Hrvoje Siric \"R3D\"",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CROR3D/MiniGames/issues"
+  },
+  "homepage": "https://github.com/CROR3D/MiniGames#readme",
+  "devDependencies": {
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3"
+  }
+}
