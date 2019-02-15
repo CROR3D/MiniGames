@@ -23,11 +23,18 @@
 {% endblock %}
 
 {% block content %}
-    <div id="playHeader" class="jumbotron mt-3"></div>
-
-    <div id="gameBoard" class="jumbotron mt-3">
-        <div id="gameBoardUpper" class="card text-center p-5 mb-3"></div>
-        <div id="gameBoardLower" class="card text-center p-5"></div>
+    <div class="navbar mt-5">
+        <blockquote class="blockquote mb-0">
+          <p id="playHeader"></p>
+          <footer id="descriptionHeader" class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+        </blockquote>
+    </div>
+    <div id="statBox" class="row text-center p-3 mt-5"></div>
+    <div class="card mt-5">
+        <div id="gameBoard" class="card-body">
+            <div id="gameBoardUpper" class="card text-center p-5 mb-3"></div>
+            <div id="gameBoardLower" class="card text-center p-5"></div>
+        </div>
     </div>
 {% endblock %}
 
