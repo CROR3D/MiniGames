@@ -1,6 +1,6 @@
-import { Registry } from './games/registry';
+import Registry from './games/registry';
 
-const UI = (function(registry)
+const UI = (function()
 {
     const news = document.getElementById('news-div');
 
@@ -27,10 +27,10 @@ const UI = (function(registry)
         {
             const gameCategories = document.getElementById('gameCategories');
 
-            for(let type in registry.gamesList) {
+            for(let type in Registry.gamesList) {
                 const gameDiv = document.createElement('div'),
                     anchor = document.createElement('a');
-                let arrayLength = registry.gamesList[type].length;
+                let arrayLength = Registry.gamesList[type].length;
 
                 anchor.classList.add('dropdown-item', 'dropdown-category');
                 anchor.innerText = type;
@@ -41,7 +41,7 @@ const UI = (function(registry)
 
                 for(let i = 0; i < arrayLength; i++) {
                     const gameAnchor = document.createElement('a'),
-                          game = registry.gamesList[type][i][0];
+                          game = Registry.gamesList[type][i].gameName;
 
                     gameAnchor.classList.add('dropdown-item');
                     gameAnchor.title = type;
@@ -56,6 +56,6 @@ const UI = (function(registry)
 
         }
     }
-})(Registry);
+})();
 
-export { UI };
+export default UI;

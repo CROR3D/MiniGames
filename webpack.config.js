@@ -6,15 +6,15 @@ module.exports = [
         entry: "./js/app",
         output: {
             path: path.resolve(__dirname, "build"),
-            filename: "app.bundle.js",
+            filename: "app.bundle.js"
         }
     },
     {
         mode: "development",
-        entry: "./js/games/controller",
+        entry: "./js/controller",
         output: {
             path: path.resolve(__dirname, "build"),
-            filename: "play.bundle.js",
+            filename: "controller.bundle.js"
         }
     }
 ]

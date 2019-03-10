@@ -1,4 +1,12 @@
-var gameVariables = {
+/*
+    Main game variables (destructuring is used beneath every object declaration):
+        - gameVariables (title, description, grab existing UI elements)
+        - HelperFunctions (short functions that help calculate or display something)
+        - gameSelected (variables that game is currently working with)
+        - gameState (state of the game at the given moment)
+*/
+
+let gameVariables = {
     gameData: {
         title: sessionStorage.getItem('gameLink'),
         description: 'Find out what sentence is hidden by guessing letters every turn. You start with 5 points. If you guess wrong you will lose 1 point. Getting to 0 points - game ends.',
@@ -25,15 +33,21 @@ var gameVariables = {
         statBox: document.querySelector('#statBox'),
         gameBoard: document.querySelector('#gameBoard'),
         gameBoardUpper: document.querySelector('#gameBoardUpper'),
-        gameBoardLower: document.querySelector('#gameBoardLower'),
-        modal: document.querySelector('#modal'),
-        modalTitle: document.querySelector('#modal-title')
+        gameBoardLower: document.querySelector('#gameBoardLower')
     }
 }
+    let { title, description } = gameVariables.gameData;
 
 const HelperFunctions = (function ()
 {
     return {
+        gameOver: function()
+        {
+            if(confirm("Do you want to restart?"))
+            {
+                window.location.reload();
+            }
+        },
         getEmpty: function(sentence)
         {
             let array = [];
@@ -77,19 +91,25 @@ const HelperFunctions = (function ()
     }
 })();
 
-var gameSelected = {
+let gameSelected = {
     currentHint: gameVariables.gameData.sentenceList.level1[0].hint,
     currentSentence: gameVariables.gameData.sentenceList.level1[0].content
 }
+    let { currentHint, currentSentence } = gameSelected;
 
-var gameState = {
+let gameState = {
     isLost: false,
     highScore: 0,
     currentLevel: 1,
     currentScore: 5, // TODO change to attemptsLeft
-    sentenceProgress: HelperFunctions.getEmpty(gameSelected.currentSentence),
-    lettersLeft: gameSelected.currentSentence.replace(/[^a-zA-Z]/g, "").length
+    sentenceProgress: HelperFunctions.getEmpty(currentSentence),
+    lettersLeft: currentSentence.replace(/[^a-zA-Z]/g, "").length
 }
+    let { isLost, highScore, currentLevel, currentScore, sentenceProgress, lettersLeft } = gameState;
+
+/*
+    GameUI function that controls created elements and stats display
+*/
 
 const GameUI = (function ()
 {
@@ -102,17 +122,17 @@ const GameUI = (function ()
         score.classList.add('col', 'mb-3');
         score.style.fontSize = 'x-large';
         score.setAttribute('id', 'score-table');
-        score.innerText = `Score: ${gameState.highScore}`;
+        score.innerText = `Score: ${highScore}`;
 
         level.classList.add('col', 'mb-3');
         level.style.fontSize = 'x-large';
         level.setAttribute('id', 'level-table');
-        level.innerText = `Level: ${gameState.currentLevel}`;
+        level.innerText = `Level: ${currentLevel}`;
 
         attempt.classList.add('col', 'mb-3');
         attempt.style.fontSize = 'x-large';
         attempt.setAttribute('id', 'attempt-table');
-        attempt.innerText = `Attempts: ${gameState.currentScore}`;
+        attempt.innerText = `Attempts: ${currentScore}`;
 
         gameVariables.selectUI.statBox.appendChild(score);
         gameVariables.selectUI.statBox.appendChild(level);
@@ -124,13 +144,13 @@ const GameUI = (function ()
         const gameTitle = document.createElement('h1');
 
         gameTitle.classList.add('display-4', 'text-center');
-        gameTitle.innerText = gameVariables.gameData.title;
+        gameTitle.innerText = title;
 
         gameVariables.selectUI.header.appendChild(gameTitle);
         gameVariables.selectUI.gameBoardUpper.style.fontSize = 'x-large';
         gameVariables.selectUI.gameBoardUpper.style.letterSpacing = "10px";
-        gameVariables.selectUI.gameBoardUpper.innerText = gameState.sentenceProgress;
-        gameVariables.selectUI.description.innerText = gameVariables.gameData.description;
+        gameVariables.selectUI.gameBoardUpper.innerText = sentenceProgress;
+        gameVariables.selectUI.description.innerText = description;
     }
 
     function gameBoardLowerUI()
@@ -138,8 +158,6 @@ const GameUI = (function ()
         const inputDiv = document.createElement('div'),
               userInput = document.createElement('input'),
               button = document.createElement('button');
-
-        gameVariables.selectUI.gameBoardLower.classList.add('row');
 
         gameVariables.selectUI.gameBoardLower.appendChild(inputDiv);
 
@@ -181,6 +199,10 @@ const GameUI = (function ()
     }
 })();
 
+/*
+    Main game executable function
+*/
+
 const GuessSentence = (function (gameUI, helperFunctions)
 {
     let letter = '';
@@ -195,7 +217,7 @@ const GuessSentence = (function (gameUI, helperFunctions)
 
         function letterAttempt()
         {
-            if(gameState.isLost) window.location.reload();
+            if(isLost) window.location.reload();
 
             letter = userInput.value;
 
@@ -203,44 +225,43 @@ const GuessSentence = (function (gameUI, helperFunctions)
 
             if(document.querySelector('.alert'))
             {
-              gameVariables.selectUI.gameBoard.removeChild(document.querySelector('.alert'));
+                gameVariables.selectUI.gameBoard.removeChild(document.querySelector('.alert'));
             }
 
             alert.classList.add('alert', 'alert-danger', 'text-center');
             alert.setAttribute('role', 'alert');
             alert.innerText = `NO LETTER ${letter.toUpperCase()}`;
 
-            if(gameSelected.currentSentence.includes(letter))
+            if(currentSentence.includes(letter))
             {
-                gameState.sentenceProgress = helperFunctions.setProgressSentence(gameSelected.currentSentence, gameState.sentenceProgress, letter);
-                let number = helperFunctions.getGuessedCount(gameSelected.currentSentence, gameState.sentenceProgress, letter);
-                gameState.lettersLeft -= number;
-                gameVariables.selectUI.gameBoardUpper.innerText = gameState.sentenceProgress;
+                sentenceProgress = helperFunctions.setProgressSentence(currentSentence, sentenceProgress, letter);
+                let number = helperFunctions.getGuessedCount(currentSentence, sentenceProgress, letter);
+                lettersLeft -= number;
+                gameVariables.selectUI.gameBoardUpper.innerText = sentenceProgress;
             }
             else
             {
                 gameVariables.selectUI.gameBoard.insertBefore(alert, gameBoardUpper);
-                gameState.currentScore--;
-                if(gameState.currentScore == 0)
+                currentScore--;
+                if(currentScore == 0)
                 {
-                    gameState.isLost = true;
-                    gameVariables.selectUI.modal.style.display = 'block';
-                    gameVariables.selectUI.modalTitle.innerText = 'GAME OVER';
+                    isLost = true;
+                    helperFunctions.gameOver();
                 }
-                attempt.innerText = `Score: ${gameState.currentScore}`;
+                attempt.innerText = `Score: ${currentScore}`;
             }
 
-            if(gameState.lettersLeft == 0) newLevel();
+            if(lettersLeft == 0) newLevel();
         }
     }
 
     function newLevel()
     {
-        gameState.highScore += gameState.currentScore;
-        gameState.currentScore = 5;
-        gameState.currentLevel++;
+        highScore += currentScore;
+        currentScore = 5;
+        currentLevel++;
 
-        GameUI.update(gameState.highScore, gameState.currentLevel, gameState.currentScore);
+        GameUI.update(highScore, currentLevel, currentScore);
     }
 
     return {

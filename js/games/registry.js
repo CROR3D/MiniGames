@@ -1,16 +1,32 @@
+/* Import all main game files */
+import GuessSentence from './words/guess_sentence/guess_sentence';
+
+/* Register game by defining the name and executable function */
 const Registry = (function()
 {
-    // Add gameName and scriptName
     const gamesList = {
         Words: [
-            ['Guess Sentence', 'guess_sentence'],
-            ['Flip Letters', 'flip_letters'],
-            ['Find Words', 'find_words']
+            {
+                gameName: 'Guess Sentence',
+                executable: GuessSentence
+            },
+            {
+                gameName: 'Find Words',
+                executable: 'find_words'
+            }
         ],
         Numbers: [
-            ['Mathematic', 'mathematic']
+            {
+                gameName: 'Get the Number',
+                executable: 'get_the_number'
+            }
         ],
-        Pictures: []
+        Pictures: [
+            {
+                gameName: 'Puzzle',
+                executable: 'puzzle'
+            }
+        ]
     }
 
     return {
@@ -18,4 +34,4 @@ const Registry = (function()
     }
 })();
 
-export { Registry };
+export default Registry;

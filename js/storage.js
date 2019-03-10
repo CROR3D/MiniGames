@@ -23,4 +23,4 @@ const Storage = (function()
     }
 })();
 
-export { Storage };
+export default Storage;
