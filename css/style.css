@@ -1,3 +1,29 @@
+@font-face {
+  font-family: goodTimes;
+  src: url('../inc/fonts/good_times_rg.ttf');
+}
+
+html
+{
+  background: url('../inc/pictures/background.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body
+{
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.top-header
+{
+    width: 100%;
+    height: 80px;
+    background-color: rgb(52, 27, 75, 0.9);
+}
+
 .site-logo
 {
     width: 50%;
@@ -12,14 +38,57 @@
 
 .navbar
 {
-    padding-bottom: 20px;
-    border-bottom: 1px solid #CED4DA;
+    padding: 15px;
+    background-image: linear-gradient(rgb(71, 70, 94), rgb(141, 140, 184));
+    background-image: url('../inc/pictures/texture.jpg');
+    font-family: goodTimes;
 }
 
 .navbar .navbar-brand
 {
     cursor: default;
     color: #E17055;
+}
+
+.float-div-style
+{
+    border: 1px solid #222528;
+    background-color: rgb(26, 13, 38, 0.8);
+}
+
+.home-news
+{
+    height: 500px;
+    margin-top: 70px;
+}
+
+.section-header
+{
+    background-color: rgb(102, 51, 153, 1);
+    margin-bottom: 30px;
+}
+
+.section-header p
+{
+    display: inline-block;
+    width: auto;
+    background-color: rgb(86, 94, 104, 1);
+    border-top: 175px;
+    padding: 5px 10px;
+    margin: 0;
+    font-size: 14px;
+    font-family: goodTimes;
+}
+
+.section-content
+{
+    padding: 5px 10px;
+}
+
+.sidebar
+{
+    height: 500px;
+    margin-top: 70px;
 }
 
 .dropdown-category
@@ -83,4 +152,9 @@ input[type="search"]:focus
 .btn-custom:hover
 {
     color: #D63031;
+}
+
+.statBox, .statBox div
+{
+    padding: 0;
 }

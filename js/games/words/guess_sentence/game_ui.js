@@ -15,6 +15,17 @@ const GameUI = (function ()
         gameBoardLower: document.querySelector('#gameBoardLower')
     }
 
+    function detailsBoxUI()
+    {
+        const gameTitle = document.createElement('h1');
+
+        gameTitle.classList.add('display-4', 'text-center');
+        gameTitle.innerText = gameData.title;
+
+        selectUI.header.appendChild(gameTitle);
+        selectUI.description.innerText = gameData.description;
+    }
+
     function statBoxUI()
     {
         const attempt = document.createElement('div'),
@@ -40,15 +51,16 @@ const GameUI = (function ()
 
     function gameBoardUpperUI()
     {
-        const gameTitle = document.createElement('h1');
+        const hintBox = document.createElement('div');
 
-        gameTitle.classList.add('display-4', 'text-center');
-        gameTitle.innerText = gameData.title;
+        hintBox.classList.add('p-3', 'text-center');
+        hintBox.style.fontSize = 'x-large';
+        hintBox.setAttribute('id', 'hint-box');
 
-        selectUI.header.appendChild(gameTitle);
         selectUI.gameBoardUpper.style.fontSize = 'x-large';
         selectUI.gameBoardUpper.style.letterSpacing = "10px";
-        selectUI.description.innerText = gameData.description;
+
+        selectUI.gameBoard.insertBefore(hintBox, selectUI.gameBoardUpper);
     }
 
     function gameBoardLowerUI()
@@ -82,19 +94,22 @@ const GameUI = (function ()
         selectUI,
         init: function()
         {
+            detailsBoxUI();
             statBoxUI();
             gameBoardUpperUI();
             gameBoardLowerUI();
         },
-        updateStats: function(score, level, attempts)
+        updateStats: function(score, level, attempts, hint)
         {
             const getScoreTable = document.getElementById('score-table'),
                   getLevelTable = document.getElementById('level-table'),
-                  getAttemptTable = document.getElementById('attempt-table');
+                  getAttemptTable = document.getElementById('attempt-table'),
+                  getHintBox = document.getElementById('hint-box');
 
             getScoreTable.innerText = `Score: ${score}`;
             getLevelTable.innerText = `Level: ${level}`;
             getAttemptTable.innerText = `Attempts: ${attempts}`;
+            getHintBox.innerText = `Hint: ${hint}`;
         },
         updateSentence: function(sentenceProgress)
         {

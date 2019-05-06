@@ -100,7 +100,7 @@ const GuessSentence = (function ()
             {
                 const alert = document.createElement('div');
 
-                if(gameState.sentenceProgress.includes(letter))
+                if(gameState.sentenceProgress.includes(letter)  && letter != '')
                 {
                     GameUI.displayAlert(letter, alert, true);
                 }
@@ -129,7 +129,7 @@ const GuessSentence = (function ()
         gameState.attemptsLeft = 5;
         gameState.currentLevel++;
 
-        GameUI.updateStats(gameState.highScore, gameState.currentLevel, gameState.attemptsLeft);
+        GameUI.updateStats(gameState.highScore, gameState.currentLevel, gameState.attemptsLeft, gameSelected.hint);
         gameSelected = LevelCtrl.selectSentence(gameState.currentLevel);
         gameState.lettersLeft = gameSelected.content.replace(/[^a-zA-Z]/g, "").length;
         gameState.sentenceProgress = HelperFunctions.getEmpty(gameSelected.content);
@@ -142,7 +142,7 @@ const GuessSentence = (function ()
         {
             GameUI.init();
             GameUI.updateSentence(gameState.sentenceProgress);
-            GameUI.updateStats(gameState.highScore, gameState.currentLevel, gameState.attemptsLeft);
+            GameUI.updateStats(gameState.highScore, gameState.currentLevel, gameState.attemptsLeft, gameSelected.hint);
             executeGame();
         }
     }

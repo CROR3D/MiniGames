@@ -12,13 +12,10 @@
     <body>
         {% block modal %}{% endblock %}
 
+        {% block topHeader %}{% endblock %}
+
+        {% block nav %}{% endblock %}
         <div class="container">
-            <div class="site-logo mt-4">
-                <img src="inc/pictures/minigames_logo.png">
-            </div>
-
-            {% block nav %}{% endblock %}
-
             {% block content %}{% endblock %}
 
             <footer class="text-right pr-3">R3D Project 2018 &copy</footer>
