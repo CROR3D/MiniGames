@@ -3,9 +3,17 @@
   src: url('../inc/fonts/good_times_rg.ttf');
 }
 
+@font-face {
+  font-family: windlass;
+  src: url('../inc/fonts/Windlass.ttf');
+}
+
 html
 {
-  background: url('../inc/pictures/background.png') no-repeat center center fixed;
+  background-color: #ccae62;
+  background-image: url('../inc/pictures/leaves.gif'), url('../inc/pictures/background.jpg');
+  background-position: center fixed, center fixed;
+  background-repeat: no-repeat, no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -17,11 +25,26 @@ body
     background-color: rgba(0, 0, 0, 0);
 }
 
-.top-header
+.main-menu
 {
-    width: 100%;
+    width: 50%;
+    margin: 30% 25% 0 25%;
+    text-align: center;
+}
+
+.selection-group
+{
     height: 80px;
-    background-color: rgb(52, 27, 75, 0.9);
+    line-height: 80px;
+    background-color: rgba(110, 200, 100, 0.5);
+    margin: 20px 0;
+    font-size: 30px;
+    font-family: windlass;
+}
+
+.selection-group:hover
+{
+    cursor: pointer;
 }
 
 .site-logo
@@ -41,7 +64,7 @@ body
     padding: 15px;
     background-image: linear-gradient(rgb(71, 70, 94), rgb(141, 140, 184));
     background-image: url('../inc/pictures/texture.jpg');
-    font-family: goodTimes;
+    font-family: windlass;
 }
 
 .navbar .navbar-brand
@@ -77,7 +100,7 @@ body
     padding: 5px 10px;
     margin: 0;
     font-size: 14px;
-    font-family: goodTimes;
+    font-family: windlass;
 }
 
 .section-content

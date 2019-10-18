@@ -1,63 +1,15 @@
 {% extends "layout.html" %}
 
-{% block topHeader %}
-    <div class="top-header"></div>
-{% endblock %}
-
-{% block nav %}
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">MiniGames</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Game Categories
-                        </a>
-                        <div id="gameCategories" class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown"></div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">HighScores</a>
-                    </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-custom my-2 my-sm-0" type="submit">Search</button>
-                </form>
-            </div>
-        </div>
-    </nav>
-{% endblock %}
-
 {% block content %}
-    <div class="row">
-        <div class="col-md-9">
-            <main class="home-news float-div-style">
-                <div class="section-header">
-                    <p>Latest news</p>
-                </div>
-                <div class="section-content">
-                    <p>Find out about new game releases, highscores, tips and more</p>
-                </div>
-                <div id="news-div"></div>
-            </main>
+    <div class="main-menu">
+        <div class="selection-group">
+            <a>Game Categories</a>
         </div>
-        <div class="col-md-3">
-            <aside class="sidebar float-div-style">
-                <div class="section-header">
-                    <p>Most played</p>
-                </div>
-                <div class="section-header">
-                    <p>Last Beaten</p>
-                </div>
-            </aside>
+        <div class="selection-group">
+            <a>HighScores</a>
+        </div>
+        <div class="selection-group">
+            <a>News</a>
         </div>
     </div>
 {% endblock %}
