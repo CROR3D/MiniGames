@@ -17,8 +17,6 @@ const App = (function ()
         {
             UI.dropdownCategories();
 
-            // Display Articles from local storage
-
             activateGameLinks();
         }
     }
